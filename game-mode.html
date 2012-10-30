@@ -10,10 +10,10 @@
 
 	</head>
 	<body>
-		<div data-role="page" id="#game-mode">
+		<div data-role="page" id="game-mode">
 			<div data-role="header">
 				<h1>Game Mode</h1>
-				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
+				<a data-role="button" data-icon="home" onclick="$.mobile.changePage( 'menu.html', { transition: 'pop' } );">Menu</a>
 			</div>
 			<div data-role="content">		
 				<a data-role="button" onClick="$.mobile.changePage( 'scavenger-hunt.html', { transition: 'pop' } );">Scavenger Hunt</a>
