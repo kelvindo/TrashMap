@@ -14,33 +14,41 @@
 			<div data-role="header" data-position="fixed">
 				<h1>Scavenger Hunt</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode.html', { transition: 'pop' } )">Quit</a>
-				<a data-role="button">Rules</a>
+				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" class="clue-container">
 				<b>CLUE ONE</b>: Find the tallest building in the area.
-				<div class="next-clue-button" data-role="button" data-transition="pop" onclick="changeClue('two')">Next Clue</div>
+				<div id="next-clue-button1" data-rel="popup" data-role="button" data-transition="pop">Next Clue</div>
+			</div>
+			<div data-role="popup" id="next-clue-popup1" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<h1>Congrats!</h1>
+				</div>
+				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+					<p>You found the next clue! You are one step closer to your target. Click 'Next Clue' to continue.</p>   
+					<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Next Clue</a>  
+				</div>
 			</div>
 		</div>
-		
-		<div data-role="popup" id="next-clue-popup" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-			<div data-role="header" data-theme="a" class="ui-corner-top">
-				<h1>Congrats!</h1>
-			</div>
-			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-				<p>You found the next clue! You are one step closer to your target. Click 'Next Clue' to continue.</p>   
-				<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Next Clue</a>  
-			</div>
-		</div>
-		
+						
 		<div data-role="page" id="clue-two">
 			<div data-role="header" data-position="fixed">
 				<h1>Scavenger Hunt</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode.html', { transition: 'pop' } )">Quit</a>
-				<a data-role="button">Rules</a>
+				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" class="clue-container">
 				<b>CLUE TWO</b>: Find the derpy derp derp.
-				<div class="next-clue-button" data-role="button" data-transition="pop" onclick="changeClue('two')">Next Clue</div>	
+				<div id="next-clue-button2" data-role="button" data-transition="pop">Next Clue</div>	
+			</div>
+			<div data-role="popup" id="next-clue-popup2" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<h1>Congrats!</h1>
+				</div>
+				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+					<p>You found the next clue! You are super duper close to your target. Click 'Next Clue' to continue.</p>   
+					<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Next Clue</a>  
+				</div>
 			</div>
 		</div>
 		
@@ -48,26 +56,47 @@
 			<div data-role="header" data-position="fixed">
 				<h1>Scavenger Hunt</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode.html', { transition: 'pop' } )">Quit</a>
-				<a data-role="button">Rules</a>
+				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" id="found-container">
 				<b>YOU FOUND TRASHCAN!</b>
 			</div>
 		</div>
+		
+		<div data-role="page" id="rules">
+			<div data-role="header">
+				<h1>Scavenger Hunt Rules</h1>
+				<a data-role="button" data-icon="back" data-rel="back" data-iconpos="notext"></a>
+			</div>
+			<div data-role="content">
+				<ol>
+					<li>You gotta do these cool things.</li>
+					<li>And then you gotta herp a derp.</li>
+					<li>???</li>
+					<li>PROFIT</li>
+				</ol>
+			</div>
+		</div>
 	
 		<script>
 			$( document ).on( "pageinit", function() {
-				$(".next-clue-button").click(function() {
-					$("#next-clue-popup").popup( "open" );
+				$("#next-clue-button1").click(function() {
+					$("#next-clue-popup1").popup( "open" );
 				});
-			});
-			function changeClue(clueNum) {
-				$("#next-clue-popup").on({
+				$("#next-clue-popup1").on({
 					popupafterclose: function() {
-   						$.mobile.changePage( '#clue-' + clueNum, { transition: 'none' } );
+   						$.mobile.changePage( '#clue-two', { transition: 'none' } );
    					}
 				});
-			}
+				$("#next-clue-button2").click(function() {
+					$("#next-clue-popup2").popup( "open" );
+				});
+				$("#next-clue-popup2").on({
+					popupafterclose: function() {
+   						$.mobile.changePage( '#found', { transition: 'none' } );
+   					}
+				});
+			});
 		</script>
 		<!-- check location of place. If within a certain radius, then $('#clue-container').html( $('#clue-number').html() );
 	</body>
