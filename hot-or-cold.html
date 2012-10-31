@@ -51,7 +51,8 @@
 		<div data-role="page" id="hot-or-cold">
 			<div data-role="header">
 				<h1>Hot or Cold</h1>
-				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
+				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode.html', { transition: 'pop' } )">Quit</a>
+				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content">
 				<div id="map" style="position:absolute;left:70px;top:62px;right:10px;bottom:120px; text-align:center;"></div>
@@ -69,6 +70,21 @@
 						<li><a href="#">Recycling</a></li>
 					</ul>
 				</div>
+			</div>
+		</div>
+		
+		<div data-role="page" id="rules">
+			<div data-role="header">
+				<h1>Hot or Cold Rules</h1>
+				<a data-role="button" data-icon="back" data-rel="back" data-iconpos="notext"></a>
+			</div>
+			<div data-role="content">
+				<ol>
+					<li>Herp a derp.</li>
+					<li>Then derp a herp.</li>
+					<li>???</li>
+					<li>PROFIT</li>
+				</ol>
 			</div>
 		</div>
 	</body>
