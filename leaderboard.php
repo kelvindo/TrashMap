@@ -16,22 +16,18 @@
 				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
 			</div>
 			<div data-role="content">		
-				
-
-			<table>
-				<?php
-					include("config.php");		
-
-					$query = "SELECT * FROM users ORDER BY -users.points";
-					$result = mysql_query($query);
-					echo "<h1>Leaderboard</h1>";
-					while ($row = mysql_fetch_assoc($result)) {
-						echo "<tr><td><h3>".$row["first_name"]." ".$row["last_name"]." ".$row["points"]." points</h3>";
-					} 
-					?>
-			</table>
-			
-
+				<ol data-role="listview">
+					<?php
+						include("config.php");		
+	
+						$query = "SELECT * FROM users ORDER BY -users.points";
+						$result = mysql_query($query);
+						echo "<h1>Leaderboard</h1>";
+						while ($row = mysql_fetch_assoc($result)) {
+							echo "<li>".$row["first_name"]." ".$row["last_name"]." ".$row["points"]." points</li>";
+						} 
+						?>
+				</ol>
 			</div>
 		</div>
 	</body>
