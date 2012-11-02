@@ -10,10 +10,10 @@
 
 	</head>
 	<body>
-		<div data-role="page" id="trash-history" data-theme="c">
+		<div data-role="page" id="trash-history-text" data-theme="c">
 			<div data-role="header">
 				<h1>Trash History</h1>
-				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
+				<a data-role="button" href="account.html" data-icon="back">My Account</a>
 			</div>
 			<div data-role="content">		
 				
@@ -42,6 +42,33 @@
 					?>
 			</table>
 
+			</div>
+			<div data-role="footer" data-position="fixed" data-id="trash-history-footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#trash-history-text" data-prefetch="true" class="ui-btn-active ui-state-persist">Text</a></li>
+						<li><a href="#trash-history-map" data-prefetch="true">Map</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div data-role="page" id="trash-history-map" data-theme="c">
+			<div data-role="header">
+				<h1>Trash History</h1>
+				<a data-role="button" href="account.html" data-icon="back">My Account</a>
+			</div>
+			<div data-role="content">		
+				<img src="http://i.imgur.com/xUfwU.gif" alt="Your Trash History" width=100% height=90%>
+			</div>
+			<div data-role="footer" data-position="fixed" data-id="trash-history-footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#trash-history-text" data-prefetch="true">Text</a></li>
+						<li><a href="#trash-history-map" data-prefetch="true" class="ui-btn-active ui-state-persist">Map</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</body>
