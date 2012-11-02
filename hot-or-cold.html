@@ -66,9 +66,19 @@
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#" class="ui-btn-active ui-state-persist">Trash</a></li>
-						<li><a href="#">Recycling</a></li>
+						<li><a id="trash-toggle" class="ui-btn-active ui-state-persist">Trash</a></li>
+						<li><a id="recycling-toggle">Recycling</a></li>
 					</ul>
+				</div>
+			</div>
+			<div data-role="popup" id="warning-toggle-popup" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<h1>Warning</h1>
+				</div>
+				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+					<p>Toggling modes will start a new game. Are you sure?</p> 
+					<a href="#" data-role="button" id="start-new-game" data-rel="back" data-transition="flow" data-theme="b">Start New Game</a>
+					<a href="#" data-role="button" id="dont-start-new-game" data-rel="back" data-transition="flow" data-theme="a">Don't Start New Game</a>
 				</div>
 			</div>
 		</div>
@@ -80,12 +90,44 @@
 			</div>
 			<div data-role="content">
 				<ol>
-					<li>Herp a derp.</li>
-					<li>Then derp a herp.</li>
-					<li>???</li>
-					<li>PROFIT</li>
+					<li>Your position on the map is shown by the running man.</li>
+					<li>As you get closer to the target trash can, the temperature will rise in the thermometer and the text box will notify you that you are getting hotter.</li>
+					<li>As you move farther away from the target trash can, the temperature will drop in the thermometer and the text box will notify you that you are getting colder.</li>
+					<li>Once you locate the trash can, you will be notified by a popup and redirected to the 'found trashcan' page.</li>
 				</ol>
+				<p>Hint: if you have trouble locating a clue or if you found an alternate trash can, you can always click 'quit' on the left corner to leave the game!</p>
 			</div>
 		</div>
+		
+		<script>
+			$( document ).ready(function() {
+				$("#trash-toggle").click(function(e) {
+					if (!$(this).hasClass("ui-btn-active")) {
+						e.stopImmediatePropagation();
+    					e.preventDefault();
+    					$("#warning-toggle-popup").popup( "open" );
+					}
+				});
+				$("#recycling-toggle").click(function(e) {
+					if (!$(this).hasClass("ui-btn-active")) {
+						e.stopImmediatePropagation();
+    					e.preventDefault();
+    					$("#warning-toggle-popup").popup( "open" );
+					}
+				});
+				$("#start-new-game").click(function() {
+					if ($("#trash-toggle").hasClass("ui-btn-active")) {
+						$("#trash-toggle").removeClass("ui-btn-active");
+						$("#recycling-toggle").addClass("ui-btn-active");
+					} else if ($("#recycling-toggle").hasClass("ui-btn-active")) {
+						$("#recycling-toggle").removeClass("ui-btn-active");
+						$("#trash-toggle").addClass("ui-btn-active");
+					}
+				});
+				$("#dont-start-new-game").click(function() {
+					
+				});
+			});
+		</script>
 	</body>
 </html>

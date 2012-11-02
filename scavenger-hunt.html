@@ -17,7 +17,7 @@
 				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" class="clue-container">
-				<b>CLUE ONE</b>: Find the tallest building in the area.
+				<b>CLUE ONE</b>: Find the tallest tower in the area.
 				<div id="next-clue-button1" data-rel="popup" data-role="button" data-transition="pop">Next Clue</div>
 			</div>
 			<div data-role="popup" id="next-clue-popup1" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
@@ -25,8 +25,8 @@
 					<h1>Congrats!</h1>
 				</div>
 				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-					<p>You found the next clue! You are one step closer to your target. Click 'Next Clue' to continue.</p>   
-					<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Next Clue</a>  
+					<p>You found the next clue! You are one step closer to your target. Click 'Continue' to continue.</p>   
+					<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Continue</a>  
 				</div>
 			</div>
 		</div>
@@ -38,7 +38,7 @@
 				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" class="clue-container">
-				<b>CLUE TWO</b>: Find the derpy derp derp.
+				<b>CLUE TWO</b>: Find the round stone where whispers can travel.
 				<div id="next-clue-button2" data-role="button" data-transition="pop">Next Clue</div>	
 			</div>
 			<div data-role="popup" id="next-clue-popup2" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
@@ -46,8 +46,8 @@
 					<h1>Congrats!</h1>
 				</div>
 				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-					<p>You found the next clue! You are super duper close to your target. Click 'Next Clue' to continue.</p>   
-					<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Next Clue</a>  
+					<p>You found the next clue! You are super duper close to your target. Click 'Continue' to continue.</p>   
+					<a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">Continue</a>  
 				</div>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" id="found-container">
-				<b>YOU FOUND TRASHCAN!</b>
+				<b>CONGRATULATIONS! YOU FOUND TRASHCAN!</b>
 			</div>
 		</div>
 		
@@ -70,16 +70,17 @@
 			</div>
 			<div data-role="content">
 				<ol>
-					<li>You gotta do these cool things.</li>
-					<li>And then you gotta herp a derp.</li>
-					<li>???</li>
-					<li>PROFIT</li>
+					<li>The app will locate a trash can or recycling bin for you to find.</li>
+					<li>Clues will be presented to you one at a time.</li>
+					<li>Once you are within a certain radius of the clue, a popup will notify you to continue onto the next clue.</li>
+					<li>Once you have solved the last clue, a popup will notify you to continue, and you will be redirected to the 'found trashcan' page.</li>
 				</ol>
+				<p>Hint: if you have trouble locating a clue or if you found an alternate trash can, you can always click 'quit' on the left corner to leave the game!</p>
 			</div>
 		</div>
 	
 		<script>
-			$( document ).on( "pageinit", function() {
+			$( document ).ready(function() {
 				$("#next-clue-button1").click(function() {
 					$("#next-clue-popup1").popup( "open" );
 				});
