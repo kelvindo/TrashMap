@@ -35,7 +35,7 @@
 								ORDER BY trash_activity.time_created;";
 					$result = mysql_query($query);
 					while ($row = mysql_fetch_assoc($result)) {
-						echo "<tr><td><h2>Trashcan ".$row["x"]." ".$row["y"]." found on ".$row["time_created"]."</h2>";
+						echo "<tr><td><h2>Trashcan at (".$row["x"].", ".$row["y"].") found on ".$row["time_created"]."</h2>";
 						//echo "<p class='author'>Points: ".$row["points"]."</p>";
 						//echo "<td><img width='100' class='pretty' src='".$row["image"]."' /></td></td>";
 					} 
