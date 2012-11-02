@@ -18,7 +18,20 @@
 			<div data-role="content">		
 				
 
-			Placeholder
+			<table>
+				<?php
+					include("config.php");		
+
+					$query = "SELECT * FROM achievements";
+					$result = mysql_query($query);
+					echo "<h1>Your Achievements</h1>";
+					while ($row = mysql_fetch_assoc($result)) {
+						echo "<tr><td><h2>".$row["name"]."</h2>";
+						echo "<p>".$row["description"]."</p> <p>Worth: ".$row["point_worth"]." points</p>";
+
+					} 
+					?>
+			</table>
 
 
 			</div>
