@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 	include_once('php/fb_init.php');
 
@@ -7,6 +8,10 @@
 
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
+=======
+<!DOCTYPE html>
+<html>
+>>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 	<head>
 		<title>TrashMap - Login</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,9 +25,14 @@
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	</head>
+<<<<<<< HEAD
   	<body>
   	
 	  	<div data-role="page" id="login" data-theme="c">
+=======
+	<body>
+		<div data-role="page" id="login" data-theme="c">
+>>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 			<div data-role="header"><h1>Login page</h1></div>
 			<div data-role="content">
 			   	<div data-role="button" onClick="loginUser();">Login with Facebook</div>
@@ -30,6 +40,7 @@
 			</div>
 		</div>
 		
+<<<<<<< HEAD
 	    <script>
 	    	window.fbAsyncInit = function() {
 	        	FB.init({
@@ -43,12 +54,34 @@
 				FB.Event.subscribe('auth.statusChange', handleStatusChange);	
 					   
 				FB.getLoginStatus(function(response) {
+=======
+	    <div id="fb-root"></div>
+		<script>
+			window.fbAsyncInit = function() {
+				FB.init({ 
+					appId: '375003062578548', 
+			    	status: true, 
+			    	cookie: true,
+			    	xfbml: true,
+			    	oauth: true
+			    });
+			 
+			    FB.Event.subscribe('auth.statusChange', handleStatusChange);	
+			   
+			    FB.getLoginStatus(function(response) {
+>>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 			    	if (response.status === 'connected') {
 			    		$.mobile.changePage( "menu.php", { transition: "pop" } );
 			    	} 
 			    });
+<<<<<<< HEAD
 		   	};
 		   	(function(d){
+=======
+	    	};
+			
+			(function(d){
+>>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 		    	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 		     	if (d.getElementById(id)) {return;}
 		    	js = d.createElement('script'); js.id = id; js.async = true;
@@ -72,7 +105,13 @@
 		     	  	updateUserInfo(response);
 		     	}
 		   	}
+<<<<<<< HEAD
 		   	
 	    </script>
+=======
+		   
+	   </script>
+	
+>>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 	</body>
 </html>
