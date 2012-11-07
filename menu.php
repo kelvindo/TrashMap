@@ -22,7 +22,7 @@
 				<h1>Menu</h1>
 			</div>
 			<div data-role="content">
-				<a data-role="button" onClick="$.mobile.changePage( 'game-mode.php', { transition: 'pop' } );">Game Mode</a>
+				<a data-role="button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
 				<a data-role="button" onClick="$.mobile.changePage( 'quick-find.php', { transition: 'pop' } );">Quick Find</a>
 				<a data-role="button" onClick="$.mobile.changePage( 'account.php', { transition: 'pop' } );">My Account</a>
 			</div>
