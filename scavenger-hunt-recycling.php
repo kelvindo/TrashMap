@@ -20,6 +20,24 @@
 				<b>CLUE ONE</b>: Find the tallest tower in the area.
 				<a href="#next-clue-popup1" id="next-clue-button1" data-rel="popup" data-role="button" data-transition="pop">Next Clue</a>
 			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#warning-toggle-popup" data-rel="popup" id="trash-toggle">Trash</a></li>
+						<li><a href="#" id="recycling-toggle" class="ui-btn-active ui-state-persist">Recycling</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="popup" id="warning-toggle-popup" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<h1>Warning</h1>
+				</div>
+				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+					<p>Toggling modes will start a new game. Are you sure?</p> 
+					<a href="#" onClick="$.mobile.changePage( 'scavenger-hunt-trash.php', { transition: 'none' } )" data-role="button" data-theme="b">Start New Game</a>
+					<a href="#" data-role="button" onClick="$('#recycling-toggle').trigger('click');" data-rel="back" data-theme="a">Don't Start New Game</a>
+				</div>
+			</div>
 			<div data-role="popup" id="next-clue-popup1" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
 				<div data-role="header" data-theme="a" class="ui-corner-top">
 					<h1>Congrats!</h1>

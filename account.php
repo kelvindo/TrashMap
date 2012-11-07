@@ -19,7 +19,7 @@
 			<div data-role="content">		
 				<a data-role="button" onClick="$.mobile.changePage( 'achievements.php', { transition: 'pop' } );">Achievements</a>
 				<a data-role="button" onClick="$.mobile.changePage( 'leaderboard.php', { transition: 'pop' } );">Leaderboard</a>
-				<a data-role="button" onClick="$.mobile.changePage( 'trash-history.php', { transition: 'pop' } );">Trash History</a>
+				<a data-role="button" onClick="$.mobile.changePage( 'trash-history-text.php', { transition: 'pop' } );">Trash History</a>
 			</div>
 		</div>
 		
