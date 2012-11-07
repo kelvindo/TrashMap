@@ -17,16 +17,16 @@
 				<a data-role="button" onclick="$.mobile.changePage( 'scavenger-hunt-rules.php', { transition: 'none' } )">Rules</a>
 			</div>
 			<div data-role="content" class="clue-container">
-				<b>CLUE ONE</b>: Find the tallest tower in the area.
-				<a href="#next-clue-popup1" id="next-clue-button1" data-rel="popup" data-role="button" data-transition="pop">Next Clue</a>
+				<b>CLUE TWO</b>: Find the round stone where whispers can travel.
+				<a href="#next-clue-popup2" id="next-clue-button1" data-rel="popup" data-role="button" data-transition="pop">Next Clue</a>
 			</div>
-			<div data-role="popup" id="next-clue-popup1" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+			<div data-role="popup" id="next-clue-popup2" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
 				<div data-role="header" data-theme="a" class="ui-corner-top">
 					<h1>Congrats!</h1>
 				</div>
 				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
 					<p>You found the next clue! You are one step closer to your target. Click 'Continue' to continue.</p>   
-					<a data-prefetch="true" onClick="$.mobile.changePage( 'scavenger-hunt-clue2.php', { transition: 'none' } );" data-role="button" data-transition="flow" data-theme="b">Continue</a>  
+					<a data-prefetch="true" onClick="$.mobile.changePage( 'scavenger-hunt-found.php', { transition: 'none' } );" data-role="button" data-transition="flow" data-theme="b">Continue</a>  
 				</div>
 			</div>
 		</div>

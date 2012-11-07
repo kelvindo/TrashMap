@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 	include_once('php/fb_init.php');
 
@@ -6,8 +5,6 @@
 	$user = $facebook->getUser();
 ?>
 
-=======
->>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,13 +29,10 @@
 		</style>
 	</head>
 	<body>
-<<<<<<< HEAD
 		<script>
 			alert('<?php echo $user ?>');
 		</script>
 	
-=======
->>>>>>> 9f633b90e6cafaee2424261417b411c25116d5ff
 		<div data-role="page" id="menu" data-theme="c">
 			<div data-role="header">
 				<h1>Menu</h1>
