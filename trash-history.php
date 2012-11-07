@@ -13,7 +13,7 @@
 		<div data-role="page" id="trash-history-text" data-theme="c">
 			<div data-role="header">
 				<h1>Trash History</h1>
-				<a data-role="button" href="account.html" data-icon="back">My Account</a>
+				<a data-role="button" href="account.php" data-icon="back">My Account</a>
 			</div>
 			<div data-role="content">		
 				
@@ -57,7 +57,7 @@
 		<div data-role="page" id="trash-history-map" data-theme="c">
 			<div data-role="header">
 				<h1>Trash History</h1>
-				<a data-role="button" href="account.html" data-icon="back">My Account</a>
+				<a data-role="button" href="account.php" data-icon="back">My Account</a>
 			</div>
 			<div data-role="content">		
 				<img src="http://i.imgur.com/xUfwU.gif" alt="Your Trash History" width=100% height=90%>
