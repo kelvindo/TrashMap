@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,12 +10,7 @@
 		<script src="http://www.google.com/jsapi?key=AIzaSyDUGIMFHD0MoPLaGQFQUwWBFwPr3zTVWIg&autoload=%7Bmodules%3A%5B%7Bname%3A%22maps%22%2Cversion%3A3%2Cother_params%3A%22sensor%3Dtrue%22%7D%5D%7D"></script>
 		<script type="text/javascript">
 		google.setOnLoadCallback(function() {
-			var firstPosition = null;
-			var trashCans = null;
-			var oldDistance = null;
-			var found = null;
-			var trashPoint = null;
-
+			var position;
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
 					zoom: 20,
@@ -26,62 +20,29 @@
 				var marker = null;
 
 				navigator.geolocation.getCurrentPosition(function(position) {
-					firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					var firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					map.setCenter(firstPosition);
 				});
-				autoUpdate();	
+
+				function autoUpdate() {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+						if (marker) {
+							marker.setPosition(newPosition);
+						} else {
+							var markerImage = new google.maps.MarkerImage("http://imageflock.com/img/1286835864.gif", null, null, null, new google.maps.Size(20, 20));
+							marker = new google.maps.Marker({
+								position: newPosition,
+								map: map,
+								icon: markerImage
+							});
+						}
+					});
+					setTimeout(autoUpdate, 1000);
+				}
+				autoUpdate();
 			} else {
 				alert("Cannot Find Location");
-			}
-
-			function autoUpdate() {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					if (firstPosition && !trashCans) {
-						trashCans = new Array();
-						trashCans[0] = new google.maps.LatLng(firstPosition.lat() + 0.0001, firstPosition.lng() + 0.0001);
-						var trashMarker = new google.maps.Marker({
-							position: trashCans[0],
-							map: map
-						});
-					}
-					var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-					if (trashCans && !trashPoint) {
-						trashPoint = trashCans[0];
-						oldDistance = Math.abs(firstPosition.lat() - trashPoint.lat()) + Math.abs(firstPosition.lng() - trashPoint.lng());
-					}
-					if (trashPoint) {
-						if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
-							if (!found) {
-								found = 1;	
-								alert("Found It");	
-							}
-						}
-						var newDistance = Math.abs(newPosition.lat() - trashPoint.lat()) + Math.abs(newPosition.lng() - trashPoint.lng());
-						if (newDistance < oldDistance) {
-							document.getElementById('textbox').value = 'Getting: HOTTER';
-							console.log("OLDDISTANCE: " + oldDistance + " NEWDISTANCE: " + newDistance);
-						} else if (newDistance > oldDistance) {
-							document.getElementById('textbox').value = 'Getting: COLDER';
-							console.log("OLDDISTANCE: " + oldDistance + " NEWDISTANCE: " + newDistance);
-						}
-						oldDistance = newDistance;
-						if (!newPosition == firstPosition) {
-							console.log("OLD: " + firstPosition + " NEW: " + newPosition);
-							firstPosition = newPosition;
-						}
-					}
-					if (marker) {
-						marker.setPosition(newPosition);
-					} else {
-						var markerImage = new google.maps.MarkerImage("http://imageflock.com/img/1286835864.gif", null, null, null, new google.maps.Size(20, 20));
-						marker = new google.maps.Marker({
-							position: newPosition,
-							map: map,
-							icon: markerImage
-						});
-					}
-				});
-				setTimeout(autoUpdate, 1000);		
 			}
 		});	
 		</script>
@@ -95,7 +56,9 @@
 			</div>
 			<div data-role="content">
 				<div id="map" style="position:absolute;left:70px;top:62px;right:10px;bottom:120px; text-align:center;"></div>
-				<textarea id='textbox' style="position:absolute;left:70px;right:10px;bottom:45px;width:auto; resize:none; text-align:center" readonly="readonly"> Getting: HOTTER </textarea>
+				<div style="position:absolute;left:70px;right:10px;bottom:45px;">
+					<textarea style="resize:none; text-align:center" readonly="readonly"> Getting:Hotter </textarea>
+				</div>
 				<div style="position:absolute;left:10px;top:62px;bottom:45px;">
 					<img src="http://thumbs.dreamstime.com/thumblarge_575/1295379151Nr67kq.jpg" width="50" height="303">
 				</div>

@@ -10,11 +10,7 @@
 		<script src="http://www.google.com/jsapi?key=AIzaSyDUGIMFHD0MoPLaGQFQUwWBFwPr3zTVWIg&autoload=%7Bmodules%3A%5B%7Bname%3A%22maps%22%2Cversion%3A3%2Cother_params%3A%22sensor%3Dtrue%22%7D%5D%7D"></script>
 		<script type="text/javascript">
 		google.setOnLoadCallback(function() {
-			var firstPosition = null;
-			var trashCans = null;
-			var found = null;
-			var trashPoint = null;
-
+			var position;
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
 					zoom: 20,
@@ -24,52 +20,29 @@
 				var marker = null;
 
 				navigator.geolocation.getCurrentPosition(function(position) {
-					firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					var firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					map.setCenter(firstPosition);
 				});
-				autoUpdate();	
+
+				function autoUpdate() {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+						if (marker) {
+							marker.setPosition(newPosition);
+						} else {
+							var markerImage = new google.maps.MarkerImage("http://imageflock.com/img/1286835864.gif", null, null, null, new google.maps.Size(20, 20));
+							marker = new google.maps.Marker({
+								position: newPosition,
+								map: map,
+								icon: markerImage
+							});
+						}
+					});
+					setTimeout(autoUpdate, 1000);
+				}
+				autoUpdate();
 			} else {
 				alert("Cannot Find Location");
-			}
-
-			function autoUpdate() {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					if (firstPosition && !trashCans) {
-						trashCans = new Array();
-						trashCans[0] = new google.maps.LatLng(firstPosition.lat() + 0.0001, firstPosition.lng() + 0.0001);
-						var trashMarker = new google.maps.Marker({
-							position: trashCans[0],
-							map: map
-						});
-					}
-					var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-					if (trashCans && !trashPoint) {
-						trashPoint = trashCans[0];
-					}
-					if (trashPoint) {
-						if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
-							if (!found) {
-								found = 1;	
-								alert("Found It");	
-							}
-						}
-						if (!newPosition == firstPosition) {
-							console.log("OLD: " + firstPosition + " NEW: " + newPosition);
-							firstPosition = newPosition;
-						}
-					}
-					if (marker) {
-						marker.setPosition(newPosition);
-					} else {
-						var markerImage = new google.maps.MarkerImage("http://imageflock.com/img/1286835864.gif", null, null, null, new google.maps.Size(20, 20));
-						marker = new google.maps.Marker({
-							position: newPosition,
-							map: map,
-							icon: markerImage
-						});
-					}
-				});
-				setTimeout(autoUpdate, 1000);		
 			}
 		});	
 		</script>
