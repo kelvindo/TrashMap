@@ -52,7 +52,7 @@
 			<div data-role="header">
 				<h1>Hot or Cold</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } )">Quit</a>
-				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
+				<a data-role="button" onclick="$.mobile.changePage( 'hot-or-cold-rules.php', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content">
 				<div id="map" style="position:absolute;left:70px;top:62px;right:10px;bottom:120px; text-align:center;"></div>

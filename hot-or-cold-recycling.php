@@ -51,8 +51,8 @@
 		<div data-role="page" id="hot-or-cold">
 			<div data-role="header">
 				<h1>Hot or Cold</h1>
-				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode.php', { transition: 'pop' } )">Quit</a>
-				<a data-role="button" onclick="$.mobile.changePage( '#rules', { transition: 'slide' } )">Rules</a>
+				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode-recycling.php', { transition: 'pop' } )">Quit</a>
+				<a data-role="button" onclick="$.mobile.changePage( 'hot-or-cold-rules.php', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content">
 				<div id="map" style="position:absolute;left:70px;top:62px;right:10px;bottom:120px; text-align:center;"></div>
@@ -80,22 +80,6 @@
 					<a href="#" onClick="$.mobile.changePage( 'hot-or-cold-trash.php', { transition: 'none' } )" data-role="button" data-theme="b">Start New Game</a>
 					<a href="#" data-role="button" onClick="$('#recycling-toggle').trigger('click');" data-rel="back" data-theme="a">Don't Start New Game</a>
 				</div>
-			</div>
-		</div>
-		
-		<div data-role="page" id="rules">
-			<div data-role="header">
-				<h1>Hot or Cold Rules</h1>
-				<a data-role="button" data-icon="back" data-rel="back" data-iconpos="notext"></a>
-			</div>
-			<div data-role="content">
-				<ol>
-					<li>Your position on the map is shown by the running man.</li>
-					<li>As you get closer to the target trash can, the temperature will rise in the thermometer and the text box will notify you that you are getting hotter.</li>
-					<li>As you move farther away from the target trash can, the temperature will drop in the thermometer and the text box will notify you that you are getting colder.</li>
-					<li>Once you locate the trash can, you will be notified by a popup and redirected to the 'found trashcan' page.</li>
-				</ol>
-				<p>Hint: if you have trouble locating a clue or if you found an alternate trash can, you can always click 'quit' on the left corner to leave the game!</p>
 			</div>
 		</div>
 	</body>

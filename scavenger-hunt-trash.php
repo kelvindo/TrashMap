@@ -26,7 +26,7 @@
 				</div>
 				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
 					<p>You found the next clue! You are one step closer to your target. Click 'Continue' to continue.</p>   
-					<a data-prefetch="true" onClick="$.mobile.changePage( 'scavenger-hunt-clue2.php', { transition: 'none' } );" data-role="button" data-transition="flow" data-theme="b">Continue</a>  
+					<a data-prefetch="true" onClick="$.mobile.changePage( 'scavenger-hunt-clue2-trash.php', { transition: 'none' } );" data-role="button" data-transition="flow" data-theme="b">Continue</a>  
 				</div>
 			</div>
 		</div>
