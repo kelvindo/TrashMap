@@ -8,12 +8,26 @@
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<script src="http://www.google.com/jsapi?key=AIzaSyDUGIMFHD0MoPLaGQFQUwWBFwPr3zTVWIg&autoload=%7Bmodules%3A%5B%7Bname%3A%22maps%22%2Cversion%3A3%2Cother_params%3A%22sensor%3Dtrue%22%7D%5D%7D"></script>
+
+		<?php
+		include ("config.php");
+		$query = "SELECT * FROM trashcans";
+		$result = mysql_query($query);
+		
+		echo "<script type='text/javascript'>\n";
+		echo "var trashcans = new Array();\n";
+		
+		while($row = mysql_fetch_array($result)) {
+			echo "trashcans[trashcans.length] = { x: '". $row['x'] ."', y: '". $row['y'] ."', id: '". $row['T_Id'] ."'};\n";
+		}
+		echo "</script>";
+		?>
+
 		<script type="text/javascript">
 		google.setOnLoadCallback(function() {
+			var gotCans = null;
 			var firstPosition = null;
-			var trashCans = null;
-			var found = null;
-			var trashPoint = null;
+			var currentPos = null;
 
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
@@ -34,23 +48,22 @@
 
 			function autoUpdate() {
 				navigator.geolocation.getCurrentPosition(function(position) {
-					if (firstPosition && !trashCans) {
-						trashCans = new Array();
-						trashCans[0] = new google.maps.LatLng(firstPosition.lat() - 0.0001, firstPosition.lng() - 0.0001);
-						var trashMarker = new google.maps.Marker({
-							position: trashCans[0],
-							map: map
-						});
+					if (!gotCans && trashcans) {
+						gotCans = true;
+						for (var i = 0; i < trashcans.length; i++) {
+							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
+							var trashMarker = new google.maps.Marker({
+								position: trashPoint,
+								map: map
+							});
+						}
 					}
 					var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-					if (trashCans && !trashPoint) {
-						trashPoint = trashCans[0];
-					}
-					if (trashPoint) {
-						if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
-							if (!found) {
-								found = 1;	
-								alert("Found It");	
+					if (gotCans) {
+						for (var i = 0; i < trashcans.length; i++) {
+							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
+							if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
+								window.location.href = "found-recycle.php?id=" + trashcans[i].id + "&new=0";	
 							}
 						}
 						if (!newPosition == firstPosition) {
@@ -68,10 +81,16 @@
 							icon: markerImage
 						});
 					}
+					currentPos = newPosition;
 				});
 				setTimeout(autoUpdate, 1000);		
 			}
 		});	
+		</script>
+		<script type="text/javascript">
+		$(document).ready("#button").click(function() {
+			window.location.href = "found-recycle.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
+		});
 		</script>
 	</head>
 	<body>
@@ -79,6 +98,7 @@
 			<div data-role="header">
 				<h1>Quick Find</h1>
 				<a data-role="button" href="menu.php" data-icon="home">Menu</a>
+				<a data-role="button" id="addButton">Add Recycling Bin Here</a>
 			</div>
 			<div data-role="content">		
 				<div id="map" style="position:absolute;left:0px;top:42px;right:0px;bottom:35px;"></div>

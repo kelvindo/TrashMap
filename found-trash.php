@@ -8,6 +8,26 @@
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 
+		<?php
+		include ("config.php");
+		if ($_GET['new'] == 1) {
+			$x = $_GET['x'];
+			$y = $_GET['y'];
+			echo "<script type='text/javascript'>\n";
+			echo "var newTrashcan = { x: '". $x ."', y: '". $y ."'};\n";
+			echo "</script>";
+		} else if ($_GET['new'] == 0) {
+			$id = $_GET['id'];
+			echo "<script type='text/javascript'>\n";
+			echo "var newTrashcan = { id: '". $id ."'};\n";
+			echo "</script>";
+		}
+		?>
+
+		<script type="text/javascript">
+		alert(object.x + " " + object.y);
+		</script>
+
 	</head>
 	<body>
 		<div data-role="page" id="scavenger-hunt-found">

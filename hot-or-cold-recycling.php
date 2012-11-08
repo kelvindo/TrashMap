@@ -8,13 +8,26 @@
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<script src="http://www.google.com/jsapi?key=AIzaSyDUGIMFHD0MoPLaGQFQUwWBFwPr3zTVWIg&autoload=%7Bmodules%3A%5B%7Bname%3A%22maps%22%2Cversion%3A3%2Cother_params%3A%22sensor%3Dtrue%22%7D%5D%7D"></script>
+
+		<?php
+		include ("config.php");
+		$query = "SELECT * FROM trashcans";
+		$result = mysql_query($query);
+		
+		echo "<script type='text/javascript'>\n";
+		echo "var trashcans = new Array();\n";
+		
+		while($row = mysql_fetch_array($result)) {
+			echo "trashcans[trashcans.length] = { x: '". $row['x'] ."', y: '". $row['y'] ."', id: '". $row['T_Id'] ."'};\n";
+		}
+		echo "</script>";
+		?>
+
 		<script type="text/javascript">
 		google.setOnLoadCallback(function() {
-			var firstPosition = null;
-			var trashCans = null;
+			var trashToFind = null;
+			var trashToFindId = null;
 			var oldDistance = null;
-			var found = null;
-			var trashPoint = null;
 
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
@@ -25,7 +38,7 @@
 				var marker = null;
 
 				navigator.geolocation.getCurrentPosition(function(position) {
-					firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					var firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					map.setCenter(firstPosition);
 				});
 				autoUpdate();	
@@ -35,23 +48,27 @@
 
 			function autoUpdate() {
 				navigator.geolocation.getCurrentPosition(function(position) {
-					if (firstPosition && !trashCans) {
-						trashCans = new Array();
-						trashCans[0] = new google.maps.LatLng(firstPosition.lat() - 0.0001, firstPosition.lng() - 0.0001);
-					}
 					var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-					if (trashCans && !trashPoint) {
-						trashPoint = trashCans[0];
-						oldDistance = Math.abs(firstPosition.lat() - trashPoint.lat()) + Math.abs(firstPosition.lng() - trashPoint.lng());
-					}
-					if (trashPoint) {
-						if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
-							if (!found) {
-								found = 1;	
-								alert("Found It");	
+					if (!trashToFind && trashcans) {
+						for (var i = 0; i < trashcans.length; i++) {
+							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
+							var testDistance = Math.abs(newPosition.lat() - trashPoint.lat()) + Math.abs(newPosition.lng() - trashPoint.lng());
+							if (!oldDistance) {
+								oldDistance = testDistance;
+								trashToFind = trashPoint;
+								trashToFindId = trashcans[i].id;
+							} else if (testDistance < oldDistance) {
+								oldDistance = testDistance;
+								trashToFind = trashPoint;
+								trashToFindId = trashcans[i].id;
 							}
 						}
-						var newDistance = Math.abs(newPosition.lat() - trashPoint.lat()) + Math.abs(newPosition.lng() - trashPoint.lng());
+					}
+					if (trashToFind) {
+						if ((Math.abs(newPosition.lat() - trashToFind.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashToFind.lng()) < 0.00001)) {
+							window.location.href = "found-recycle.php?id=" + trashToFindId + "&new=0";
+						}
+						var newDistance = Math.abs(newPosition.lat() - trashToFind.lat()) + Math.abs(newPosition.lng() - trashToFind.lng());
 						if (newDistance < oldDistance) {
 							document.getElementById('textbox').value = 'Getting: HOTTER';
 							console.log("OLDDISTANCE: " + oldDistance + " NEWDISTANCE: " + newDistance);
@@ -60,10 +77,6 @@
 							console.log("OLDDISTANCE: " + oldDistance + " NEWDISTANCE: " + newDistance);
 						}
 						oldDistance = newDistance;
-						if (!newPosition == firstPosition) {
-							console.log("OLD: " + firstPosition + " NEW: " + newPosition);
-							firstPosition = newPosition;
-						}
 					}
 					if (marker) {
 						marker.setPosition(newPosition);
