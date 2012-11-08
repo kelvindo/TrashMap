@@ -78,7 +78,7 @@
 		<div data-role="page" id="quick-find">
 			<div data-role="header">
 				<h1>Quick Find</h1>
-				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
+				<a data-role="button" href="menu.php" data-icon="home">Menu</a>
 			</div>
 			<div data-role="content">		
 				<div id="map" style="position:absolute;left:0px;top:42px;right:0px;bottom:35px;"></div>
