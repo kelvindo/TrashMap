@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>TrashMap - Scavenger Hunt</title>
+		<title>TrashMap - Found Trash Can</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="layout.css">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
@@ -30,9 +30,9 @@
 
 	</head>
 	<body>
-		<div data-role="page" id="scavenger-hunt-found">
+		<div data-role="page" id="found-trash-can">
 			<div data-role="header" data-position="fixed">
-				<h1>Scavenger Hunt</h1>
+				<h1>Trash Can Found</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } )">Quit</a>
 				<a data-role="button" onclick="$.mobile.changePage( 'scavenger-hunt-rules.php', { transition: 'slide' } )">Rules</a>
 			</div>
