@@ -37,11 +37,7 @@
 				navigator.geolocation.getCurrentPosition(function(position) {
 					if (firstPosition && !trashCans) {
 						trashCans = new Array();
-						trashCans[0] = new google.maps.LatLng(firstPosition.lat() + 0.0001, firstPosition.lng() + 0.0001);
-						var trashMarker = new google.maps.Marker({
-							position: trashCans[0],
-							map: map
-						});
+						trashCans[0] = new google.maps.LatLng(firstPosition.lat() - 0.0001, firstPosition.lng() - 0.0001);
 					}
 					var newPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					if (trashCans && !trashPoint) {
