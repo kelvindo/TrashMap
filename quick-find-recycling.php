@@ -52,9 +52,11 @@
 						gotCans = true;
 						for (var i = 0; i < trashcans.length; i++) {
 							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
+							var markerImage = new google.maps.MarkerImage("images/trash-marker.png", null, null, null, new google.maps.Size(20, 20));
 							var trashMarker = new google.maps.Marker({
 								position: trashPoint,
-								map: map
+								map: map,
+								icon: markerImage
 							});
 						}
 					}
