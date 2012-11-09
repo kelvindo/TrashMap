@@ -29,7 +29,7 @@
 		<div data-role="page" id="found-recycling-bin">
 			<div data-role="header" data-position="fixed">
 				<h1>Found Recycling Bin</h1>
-				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode-recycling.php', { transition: 'pop' } )">Quit</a>
+				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'menu.php', { transition: 'pop' } )">Quit</a>
 				<a data-role="button" onclick="$.mobile.changePage( 'scavenger-hunt-rules.php', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" id="found-container">
