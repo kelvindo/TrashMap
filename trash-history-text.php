@@ -1,3 +1,4 @@
+<?php include("php/fb_init.php");?>
 <!DOCTYPE html>
 <html>
 	<head>

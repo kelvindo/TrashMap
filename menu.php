@@ -1,9 +1,9 @@
 <?php
 	include_once('php/fb_init.php');
-
-// See if there is a user from a cookie
-	$user = $facebook->getUser();
+	include('config.php');
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -22,9 +22,31 @@
 				<h1>Menu</h1>
 			</div>
 			<div data-role="content">
+
+
+				<?
+					// Adds user to database if not already in
+					$user = $facebook->getUser();
+					if($user){
+						$user_profile = $facebook->api('/me','GET');
+						echo "<h3>Hello, ".$user_profile['first_name']."!</h3>";
+						$query = "SELECT * FROM users WHERE fb_id=".$user;
+						$result = mysql_query($query);
+						if(mysql_num_rows($result) == 0){
+							
+							$query = "INSERT INTO `users` (`first_name`, `last_name`, `fb_id`, `points`) 
+									VALUES ('".$user_profile['first_name']."', '".$user_profile['last_name']."', ".$user.", 0);";
+							mysql_query($query);
+						}
+					}
+				?>
+
+
 				<a data-role="button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
 				<a data-role="button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Quick Find</a>
 				<a data-role="button" onClick="$.mobile.changePage( 'account.php', { transition: 'pop' } );">My Account</a>
+
+
 			</div>
 		</div>
 	</body>
