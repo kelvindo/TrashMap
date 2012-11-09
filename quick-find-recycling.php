@@ -89,7 +89,7 @@
 			}
 		});
 		function addRecyclingBin() {
-			window.location.href = "found-trash.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
+			window.location.href = "found-recycling.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
 		}
 		</script>
 	</head>

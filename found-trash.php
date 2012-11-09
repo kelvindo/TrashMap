@@ -30,7 +30,7 @@
 		}
 
 		$user = $facebook->getUser();
-		if($user){
+		if ($user) {
 			$result = mysql_query("SELECT U_Id FROM `users` WHERE fb_id=".$user.";");
 			$row = mysql_fetch_assoc($result);
 			$U_Id = $row["U_Id"];
@@ -42,22 +42,17 @@
 		}
 		?>
 
-		<script type="text/javascript">
-		alert(object.x + " " + object.y);
-		</script>
-
 	</head>
 	<body>
 		<div data-role="page" id="found-trash-can">
 			<div data-role="header" data-position="fixed">
 				<h1>Trash Can Found</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'menu.php', { transition: 'pop' } )">Quit</a>
-				<a data-role="button" onclick="$.mobile.changePage( 'scavenger-hunt-rules.php', { transition: 'slide' } )">Rules</a>
 			</div>
 			<div data-role="content" id="found-container">
 				<b>You found the trashcan!</b><br/><br/>
 				<?php 
-					if($user){
+					if ($user) {
 						$result = mysql_query("SELECT * FROM `users` WHERE U_Id=$U_Id;");
 						$row = mysql_fetch_assoc($result);
 						$points = $row["points"];

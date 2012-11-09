@@ -26,7 +26,7 @@
 			<div data-role="header"><h1>Login page</h1></div>
 			<div data-role="content">
 			   	<div data-role="button" onClick="loginUser();">Login with Facebook</div>
-				<a data-role="button" onClick="$.mobile.changePage( 'menu.php', { transition: 'pop' } );">Not Now</a>
+				<a data-role="button" onClick="$.mobile.changePage( 'menu-nofb.php', { transition: 'pop' } );">Not Now</a>
 			</div>
 		</div>
 		
