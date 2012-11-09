@@ -30,14 +30,16 @@
 		}
 
 		$user = $facebook->getUser();
-		$result = mysql_query("SELECT U_Id FROM `users` WHERE fb_id=".$user.";");
-		$row = mysql_fetch_assoc($result);
-		$U_Id = $row["U_Id"];
-		$query = "INSERT INTO `trash_activity` (`U_Id`, `T_Id`, `time_created`) 
-					VALUES ($U_Id, $id, NOW());";
-		mysql_query($query);
-		$query = "UPDATE `users` SET points = points+30 WHERE fb_id=$user;";
-		mysql_query($query);
+		if($user){
+			$result = mysql_query("SELECT U_Id FROM `users` WHERE fb_id=".$user.";");
+			$row = mysql_fetch_assoc($result);
+			$U_Id = $row["U_Id"];
+			$query = "INSERT INTO `trash_activity` (`U_Id`, `T_Id`, `time_created`) 
+						VALUES ($U_Id, $id, NOW());";
+			mysql_query($query);
+			$query = "UPDATE `users` SET points = points+30 WHERE fb_id=$user;";
+			mysql_query($query);
+		}
 		?>
 
 		<script type="text/javascript">
@@ -55,10 +57,12 @@
 			<div data-role="content" id="found-container">
 				<b>You found the trashcan!</b><br/><br/>
 				<?php 
-					$result = mysql_query("SELECT * FROM `users` WHERE U_Id=$U_Id;");
-					$row = mysql_fetch_assoc($result);
-					$points = $row["points"];
-					echo "You got 30 trash points! Now you have $points points!"; 
+					if($user){
+						$result = mysql_query("SELECT * FROM `users` WHERE U_Id=$U_Id;");
+						$row = mysql_fetch_assoc($result);
+						$points = $row["points"];
+						echo "You got 30 trash points! Now you have $points points!"; 
+					}
 				?>
 			</div>
 		</div>
