@@ -24,11 +24,10 @@
 		?>
 
 		<script type="text/javascript">
+		var currentPos = null;
 		google.setOnLoadCallback(function() {
 			var gotCans = null;
 			var firstPosition = null;
-			var currentPos = null;
-
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
 					zoom: 20,
@@ -52,9 +51,11 @@
 						gotCans = true;
 						for (var i = 0; i < trashcans.length; i++) {
 							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
+							var markerImage = new google.maps.MarkerImage("images/trash-marker.png", null, null, null, new google.maps.Size(20, 20));
 							var trashMarker = new google.maps.Marker({
 								position: trashPoint,
-								map: map
+								map: map,
+								icon: markerImage
 							});
 						}
 					}
@@ -85,10 +86,10 @@
 				});
 				setTimeout(autoUpdate, 1000);	
 			}
-			$(document).ready("#button").click(function() {
-				window.location.href = "found-trash.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
-			});
 		});	
+		function addTrashCan() {
+			window.location.href = "found-trash.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
+		}
 		</script>
 	</head>
 	<body>
@@ -96,7 +97,7 @@
 			<div data-role="header">
 				<h1>Quick Find</h1>
 				<a data-role="button" href="menu.php" data-icon="home">Menu</a>
-				<a data-role="button" id="addButton">Add Trash Can Here</a>
+				<a data-role="button" onclick="addTrashCan()">Add Trash Can Here</a>
 			</div>
 			<div data-role="content">		
 				<div id="map" style="position:absolute;left:0px;top:42px;right:0px;bottom:35px;"></div>

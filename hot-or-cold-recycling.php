@@ -71,9 +71,11 @@
 						var newDistance = Math.abs(newPosition.lat() - trashToFind.lat()) + Math.abs(newPosition.lng() - trashToFind.lng());
 						if (newDistance < oldDistance) {
 							document.getElementById('textbox').value = 'Getting: HOTTER';
+							document.getElementById('img').src = "images/red_therm.jpg";
 							console.log("OLDDISTANCE: " + oldDistance + " NEWDISTANCE: " + newDistance);
 						} else if (newDistance > oldDistance) {
 							document.getElementById('textbox').value = 'Getting: COLDER';
+							document.getElementById('img').src = "images/blue_therm.jpg";
 							console.log("OLDDISTANCE: " + oldDistance + " NEWDISTANCE: " + newDistance);
 						}
 						oldDistance = newDistance;
@@ -103,10 +105,8 @@
 			</div>
 			<div data-role="content">
 				<div id="map" style="position:absolute;left:70px;top:62px;right:10px;bottom:120px; text-align:center;"></div>
-				<textarea id = 'textbox' style="position:absolute;left:70px;right:10px;bottom:45px;width:80%; resize:none; text-align:center" readonly="readonly"> Getting: HOTTER </textarea>
-				<div style="position:absolute;left:10px;top:62px;bottom:45px;">
-					<img src="http://thumbs.dreamstime.com/thumblarge_575/1295379151Nr67kq.jpg" width="50" height="303">
-				</div>
+				<textarea id="textbox" style="position:absolute;left:70px;right:10px;bottom:45px;width:76%;resize:none;text-align:center" readonly="readonly"> Getting: HOTTER </textarea>
+				<img id="img" src="images/red_therm.jpg" style="position:absolute;left:10px;top:62px;bottom:45px;" width="50" height="303">
 			</div>
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">
