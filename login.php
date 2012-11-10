@@ -29,17 +29,17 @@
 				<a data-role="button" onClick="$.mobile.changePage( 'menu-nofb.php', { transition: 'pop' } );">Not Now</a>
 			</div>
 		</div>
-		
+		<div id="fb-root"></div>
 	    <script>
 	    	window.fbAsyncInit = function() {
 	        	FB.init({
 	          		appId: '<?php echo $facebook->getAppID() ?>',
+	          		channelUrl: 'http://stanford.edu/~jzkung/cgi-bin/trashmap/login.php',
 	          		cookie: true,
 	          		xfbml: true,
 	          		oauth: true
 	        	});
-	        
-	        			 
+	        	 
 				FB.Event.subscribe('auth.statusChange', handleStatusChange);	
 					   
 				FB.getLoginStatus(function(response) {
@@ -61,7 +61,7 @@
 		   			if (response.authResponse) {
 		   				$.mobile.changePage( "menu.php", { transition: "pop"} );
 		   			}
-		   		}, {scope:'email'});
+		   		});
 		    }
 		    
 		    function handleStatusChange(response) {

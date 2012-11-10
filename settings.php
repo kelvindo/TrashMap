@@ -1,3 +1,7 @@
+<?php
+	include_once('php/fb_init.php');
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,7 +23,7 @@
 				<ul data-role="listview">
 					<li><a href="#about">About</a></li>
 					<li><a href="#privacy">Privacy</a></li>
-					<li><a href="#">Log Out</a></li>
+					<li><a href="menu-nofb.php" onClick="FB.logout();">Log Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -43,5 +47,20 @@
 				By using this app, you agree to give up all your privacy to TrashMap, Inc., and Kevin Lu the noob will sell all your personal information to help the environment! Yay!
 			</div>
 		</div>
+		
+		<div id="fb-root"></div>
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
+		<script>
+			FB.init({ apiKey: '<?php echo $facebook->getAppID() ?>' });
+			FB.getLoginStatus(handleSessionResponse);
+
+			function handleSessionResponse(response) {
+			    if (!response.session) {
+			    	window.location = "menu-nofb.php";
+			    	return;
+			    }
+			    FB.logout(handleSessionResponse);
+			}
+</script>
 	</body>
 </html>

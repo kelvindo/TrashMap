@@ -1,6 +1,3 @@
-<?php
-	include_once('php/fb_init.php');
-?>
 <!DOCTYPE html>
 <html>
 	<head>
