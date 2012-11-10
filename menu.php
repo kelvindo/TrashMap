@@ -22,14 +22,12 @@
 				<h1>Menu</h1>
 			</div>
 			<div data-role="content">
-
-
 				<?
 					// Adds user to database if not already in
 					$user = $facebook->getUser();
 					if($user){
 						$user_profile = $facebook->api('/me','GET');
-						echo "<h3>Hello, ".$user_profile['first_name']."!</h3>";
+						echo "<div style='padding-bottom:10px'>Hello, ".$user_profile['first_name']."!</div>";
 						$query = "SELECT * FROM users WHERE fb_id=".$user;
 						$result = mysql_query($query);
 						if(mysql_num_rows($result) == 0){
