@@ -57,10 +57,11 @@
 			function handleSessionResponse(response) {
 			    if (!response.session) {
 			    	window.location = "menu-nofb.php";
+			    	alert("beep boop");
 			    	return;
 			    }
 			    FB.logout(handleSessionResponse);
 			}
-</script>
+		</script>
 	</body>
 </html>
