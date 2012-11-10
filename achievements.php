@@ -15,9 +15,11 @@
 				<h1>Achievements</h1>
 				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
 			</div>
-			<div data-role="content">	
+			<div data-role="content">
+				<p>You don't have any achievements right now! Go find trashcans to get some!</p>	
 				<ul data-role="listview">
 					<?php
+/*
 						include("config.php");		
 	
 						$query = "SELECT * FROM achievements";
@@ -28,6 +30,7 @@
 							echo "<li><h2>".$row["name"]."</h2>";
 							echo "<p>".$row["description"]."</p> <p>Worth: ".$row["point_worth"]." points</p></li>";
 						} 
+*/
 					?>
 				</div>
 			</div>
