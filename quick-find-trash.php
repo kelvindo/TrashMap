@@ -11,7 +11,7 @@
 
 		<?php
 		include ("config.php");
-		$query = "SELECT * FROM trashcans";
+		$query = "SELECT * FROM trashcans WHERE type='trash'";
 		$result = mysql_query($query);
 		
 		echo "<script type='text/javascript'>\n";

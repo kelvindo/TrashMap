@@ -1,3 +1,6 @@
+<?php
+	include_once('php/fb_init.php');
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,7 +19,7 @@
 			echo "<script type='text/javascript'>\n";
 			echo "var newRecycling = { x: '". $x ."', y: '". $y ."'};\n";
 			echo "</script>";
-			$query = "INSERT INTO `trashcans` (`x`, `y`) VALUES (".$x.", ".$y.");";
+			$query = "INSERT INTO `trashcans` (`x`, `y`, `type`) VALUES ($x, $y, 'recycle');";
 			mysql_query($query);
 			$id = mysql_insert_id();
 		} else if ($_GET['new'] == 0) {

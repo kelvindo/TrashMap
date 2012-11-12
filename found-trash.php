@@ -19,7 +19,7 @@
 			echo "<script type='text/javascript'>\n";
 			echo "var newTrashcan = { x: '". $x ."', y: '". $y ."'};\n";
 			echo "</script>";
-			$query = "INSERT INTO `trashcans` (`x`, `y`) VALUES (".$x.", ".$y.");";
+			$query = "INSERT INTO `trashcans` (`x`, `y`, `type`) VALUES (".$x.", ".$y.", 'trash');";
 			mysql_query($query);
 			$id = mysql_insert_id();
 		} else if ($_GET['new'] == 0) {
