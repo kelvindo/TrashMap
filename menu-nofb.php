@@ -1,6 +1,9 @@
 <?php
 	include_once('php/fb_init.php');
 	include('config.php');
+	setcookie('fbs_'.$facebook->getAppId(), '', time()-100, '/', 'domain.com');
+	session_destroy();
+	$user = $facebook->getUser();
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +26,7 @@
 				<a data-role="button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
 				<a data-role="button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Quick Find</a>
 				<a data-role="button" href="login.php">Log in</a> 
+				<?php echo $user; ?>
 			</div>
 		</div>
 	</body>
