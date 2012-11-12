@@ -21,7 +21,7 @@
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	</head>
   	<body>
-  	
+  		<div id="fb-root"></div>
 	  	<div data-role="page" id="login" data-theme="c">
 			<div data-role="header"><h1>Login page</h1></div>
 			<div data-role="content">
@@ -29,7 +29,6 @@
 				<a data-role="button" onClick="$.mobile.changePage( 'menu-nofb.php', { transition: 'pop' } );">Not Now</a>
 			</div>
 		</div>
-		<div id="fb-root"></div>
 	    <script>
 	    	window.fbAsyncInit = function() {
 	        	FB.init({
@@ -41,6 +40,11 @@
 	        	});
 	        	 
 				FB.Event.subscribe('auth.statusChange', handleStatusChange);	
+				
+	        	
+	        	FB.Event.subscribe('auth.logout', function(response) {
+		            alert("log out!");
+	        	});
 					   
 				FB.getLoginStatus(function(response) {
 			    	if (response.status === 'connected') {
@@ -59,10 +63,18 @@
 			function loginUser() {    
 		   		FB.login(function(response) { 
 		   			if (response.authResponse) {
+		   				//testAPI();
 		   				$.mobile.changePage( "menu.php", { transition: "pop"} );
 		   			}
 		   		});
 		    }
+		    
+		    function testAPI() {
+			    console.log('Welcome!  Fetching your information.... ');
+			    FB.api('/me', function(response) {
+			        console.log('Good to see you, ' + response.name + '.');
+			    });
+			}
 		    
 		    function handleStatusChange(response) {
 		    	document.body.className = response.authResponse ? 'connected' : 'not_connected';
