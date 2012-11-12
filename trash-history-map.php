@@ -1,4 +1,3 @@
-<?php include("php/fb_init.php");?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,25 +11,16 @@
 
 		<?php
 		include ("config.php");
-		$user = $facebook->getUser();
-		if($user){
-			$query = "SELECT DISTINCT t.*, u.*
-					FROM   `trashcans` t
-						   INNER JOIN trash_activity ta
-							 ON ta.T_Id = t.T_Id
-						   INNER JOIN users u
-							 ON u.U_Id = ta.U_Id
-							WHERE u.fb_id=$user";
-			$result = mysql_query($query);
+		$query = "SELECT * FROM trashcans";
+		$result = mysql_query($query);
 		
-			echo "<script type='text/javascript'>\n";
-			echo "var trashcans = new Array();\n";
+		echo "<script type='text/javascript'>\n";
+		echo "var trashcans = new Array();\n";
 		
-			while($row = mysql_fetch_array($result)) {
-				echo "trashcans[trashcans.length] = { x: '". $row['x'] ."', y: '". $row['y'] ."', id: '". $row['T_Id'] ."'};\n";
-			}
-			echo "</script>";
+		while($row = mysql_fetch_array($result)) {
+			echo "trashcans[trashcans.length] = { x: '". $row['x'] ."', y: '". $row['y'] ."', id: '". $row['T_Id'] ."'};\n";
 		}
+		echo "</script>";
 		?>
 
 		<script type="text/javascript">

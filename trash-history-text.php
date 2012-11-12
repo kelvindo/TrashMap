@@ -22,21 +22,24 @@
 			<table>
 				<?php
 					include("config.php");
+/*
+					$date = date("Y-m-d H:i:s");
+					echo $date;
+					$query = "INSERT INTO `trash_activity` (`U_Id`, `T_Id`, `time_created`) VALUES (1, 1, NOW())";
+					mysql_query($query);
+*/					
 
-					$user = $facebook->getUser();
-					if($user){
-						$query = "SELECT DISTINCT t. * , u. * , ta.time_created
-									FROM  `trashcans` t
-									INNER JOIN trash_activity ta ON ta.T_Id = t.T_Id
-									INNER JOIN users u ON u.U_Id = ta.U_Id
-									WHERE u.fb_id=$user";
-						$result = mysql_query($query);
-						while ($row = mysql_fetch_assoc($result)) {
-							echo "<tr><td><h2>Trashcan at (".$row["x"].", ".$row["y"].") found on ".$row["time_created"]."</h2>";
-							//echo "<p class='author'>Points: ".$row["points"]."</p>";
-							//echo "<td><img width='100' class='pretty' src='".$row["image"]."' /></td></td>";
-						} 
-					}
+					$query = "SELECT trashcans.x, trashcans.y, trash_activity.time_created
+								FROM trashcans
+								INNER JOIN trash_activity
+								ON trashcans.T_Id=trash_activity.T_Id
+								ORDER BY trash_activity.time_created;";
+					$result = mysql_query($query);
+					while ($row = mysql_fetch_assoc($result)) {
+						echo "<tr><td><h2>Trashcan at (".$row["x"].", ".$row["y"].") found on ".$row["time_created"]."</h2>";
+						//echo "<p class='author'>Points: ".$row["points"]."</p>";
+						//echo "<td><img width='100' class='pretty' src='".$row["image"]."' /></td></td>";
+					} 
 					?>
 			</table>
 
