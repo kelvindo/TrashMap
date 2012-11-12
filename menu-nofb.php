@@ -3,8 +3,6 @@
 	include('config.php');
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 	<head>
