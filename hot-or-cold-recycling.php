@@ -11,7 +11,7 @@
 
 		<?php
 		include ("config.php");
-		$query = "SELECT * FROM trashcans";
+		$query = "SELECT * FROM trashcans WHERE type='recycle'";
 		$result = mysql_query($query);
 		
 		echo "<script type='text/javascript'>\n";
@@ -66,7 +66,7 @@
 					}
 					if (trashToFind) {
 						if ((Math.abs(newPosition.lat() - trashToFind.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashToFind.lng()) < 0.00001)) {
-							window.location.href = "found-recycle.php?id=" + trashToFindId + "&new=0";
+							window.location.href = "found-recycling.php?id=" + trashToFindId + "&new=0";
 						}
 						var newDistance = Math.abs(newPosition.lat() - trashToFind.lat()) + Math.abs(newPosition.lng() - trashToFind.lng());
 						if (newDistance < oldDistance) {
