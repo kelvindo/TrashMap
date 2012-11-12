@@ -31,7 +31,7 @@
 						$query = "SELECT * FROM users WHERE fb_id=".$user;
 						$result = mysql_query($query);
 						if(mysql_num_rows($result) == 0){
-							
+
 							$query = "INSERT INTO `users` (`first_name`, `last_name`, `fb_id`, `points`) 
 									VALUES ('".$user_profile['first_name']."', '".$user_profile['last_name']."', ".$user.", 0);";
 							mysql_query($query);

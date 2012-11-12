@@ -57,10 +57,9 @@
 						$row = mysql_fetch_assoc($result);
 						$points = $row["points"];
 						echo "You got 30 trash points! Now you have $points points!"; 
-						echo $user;
 					} else {
 						echo "Log in to earn trash points and compete with other users!";
-						echo "<a data-role='button' href='#' onclick='FB.login();'>Log in</a>";
+						echo "<a data-role='button' href='login.php'>Log in</a>";
 					}
 				?>
 			</div>
