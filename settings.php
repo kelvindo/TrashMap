@@ -9,9 +9,23 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
+		<script type="text/javascript">
+			window.fbAsyncInit = function() {
+				FB.init({
+	          		appId: '375003062578548',
+	          		cookie: true,
+	          		xfbml: true,
+	          		oauth: true
+	        	});  	
+			}
+			
+		</script>
 
 	</head>
 	<body>
+		<div id="fb-root"></div>
 		<div data-role="page" id="settings">
 			<div data-role="header">
 				<h1>Settings</h1>
@@ -21,7 +35,7 @@
 				<ul data-role="listview">
 					<li><a href="#about">About</a></li>
 					<li><a href="#privacy">Privacy</a></li>
-					<li><a href="menu-nofb.php" onClick="FB.logout();">Log Out</a></li>
+					<li><a href="javascript:FB.logout();void(0)">Log Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -45,6 +59,7 @@
 				By using this app, you agree to give up all your privacy to TrashMap, Inc., and Kevin Lu the noob will sell all your personal information to help the environment! Yay!
 			</div>
 		</div>
+<<<<<<< HEAD
 		
 		<div id="fb-root"></div>
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -61,5 +76,7 @@
 			    FB.logout(handleSessionResponse);
 			}
 		</script>
+=======
+>>>>>>> f9c70d1f1b4dd3789878e12d9b5233788673bbc9
 	</body>
 </html>
