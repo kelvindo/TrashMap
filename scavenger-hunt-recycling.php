@@ -10,7 +10,7 @@
 
 	</head>
 	<body>
-		<div data-role="page" id="scavenger-hunt">
+		<div data-role="page" id="scavenger-hunt-recycling">
 			<div data-role="header" data-position="fixed">
 				<h1>Scavenger Hunt</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'game-mode-recycling.php', { transition: 'pop' } )">Quit</a>
