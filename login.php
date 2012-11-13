@@ -27,6 +27,7 @@
 		<div id="fb-root"></div>
 	    <script>
 	    	window.fbAsyncInit = function() {
+	    		window.reload();
 	        	FB.init({
 	          		appId: '375003062578548',
 	          		channelUrl: 'http://stanford.edu/~jzkung/cgi-bin/trashmap/login.php',

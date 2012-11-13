@@ -18,7 +18,8 @@
 			</div>
 			<div data-role="content" class="clue-container">
 				<b>CLUE TWO</b>: Find the round stone where whispers can travel.
-				<a href="#next-clue-popup2" id="next-clue-button1" data-rel="popup" data-role="button" data-transition="pop">Next Clue</a>
+				<a href="scavenger-hunt-recycling.php" id="prev-clue-button1" data-inline="true" data-role="button" data-transition="slide">Previous Clue</a>
+				<a href="#next-clue-popup2" id="next-clue-button1" data-rel="popup" data-inline="true" data-role="button" data-transition="pop" data-theme="b">Next Clue</a>
 			</div>
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">
@@ -45,6 +46,7 @@
 				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
 					<p>You found the next clue! You are one step closer to your target. Click 'Continue' to continue.</p>   
 					<a data-prefetch="true" onClick="$.mobile.changePage( 'found-recycling.php', { transition: 'none' } );" data-role="button" data-transition="flow" data-theme="b">Continue</a>  
+					<a href="#" data-rel="back" data-role="button">Cancel</a>
 				</div>
 			</div>
 		</div>
