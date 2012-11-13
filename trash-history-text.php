@@ -31,6 +31,9 @@
 									INNER JOIN users u ON u.U_Id = ta.U_Id
 									WHERE u.fb_id=$user";
 						$result = mysql_query($query);
+						if(mysql_num_rows($result) == 0) {
+							echo "<br><h>You haven't visited any bins yet!</h>";
+						}
 						while ($row = mysql_fetch_assoc($result)) {
 							if ($row['type'] == 'trash') {
 								echo "<li>

@@ -15,7 +15,9 @@
 				<h1>Achievements</h1>
 				<a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext"></a>
 			</div>
-			<div data-role="content">	
+			<div data-role="content">
+				<p>You don't have any achievements right now! Go find trashcans to get some!</p>
+				<br>	
 				<ul data-role="listview">
 					<?php
 						include("config.php");		
@@ -23,7 +25,7 @@
 						$query = "SELECT * FROM achievements";
 						$result = mysql_query($query);
 		
-						echo "<h1>Your Achievements</h1>";
+						echo "<h1>List of Achievements</h1>";
 						while ($row = mysql_fetch_assoc($result)) {
 							echo "<li><h2>".$row["name"]."</h2>";
 							echo "<p>".$row["description"]."</p> <p>Worth: ".$row["point_worth"]." points</p></li>";
