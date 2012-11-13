@@ -32,11 +32,19 @@
 									WHERE u.fb_id=$user";
 						$result = mysql_query($query);
 						while ($row = mysql_fetch_assoc($result)) {
-							echo "<li>
+							if ($row['type'] == 'trash') {
+								echo "<li>
 									<img src='images/trash-marker.png' style='padding-left: 10px; padding-top: 10px;'/>
 									<h3>Trash can found on </h3>
 									<p>".$row['time_created']."</p>
 								</li>";
+							} else {
+								echo "<li>
+									<img src='images/recycling-marker.png' style='padding-left: 10px; padding-top: 10px;'/>
+									<h3>Recycle Bin found on </h3>
+									<p>".$row['time_created']."</p>
+								</li>";
+							}
 							// (".$row["x"].", ".$row["y"].") 
 							//echo "<p class='author'>Points: ".$row["points"]."</p>";
 							//echo "<td><img width='100' class='pretty' src='".$row["image"]."' /></td></td>";

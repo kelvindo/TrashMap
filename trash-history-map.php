@@ -27,7 +27,7 @@
 			echo "var trashcans = new Array();\n";
 		
 			while($row = mysql_fetch_array($result)) {
-				echo "trashcans[trashcans.length] = { x: '". $row['x'] ."', y: '". $row['y'] ."', id: '". $row['T_Id'] ."'};\n";
+				echo "trashcans[trashcans.length] = { x: '". $row['x'] ."', y: '". $row['y'] ."', id: '". $row['T_Id'] ."', type: '". $row['type'] ."'};\n";
 			}
 			echo "</script>";
 		}
@@ -52,7 +52,12 @@
 				if (trashcans) {
 					for (var i = 0; i < trashcans.length; i++) {
 						var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
-						var markerImage = new google.maps.MarkerImage("images/trash-marker.png", null, null, null, new google.maps.Size(20, 20));
+						var markerImage;
+						if (trashcans[i].type == "trash") {
+							var markerImage = new google.maps.MarkerImage("images/trash-marker.png", null, null, null, new google.maps.Size(20, 20));
+						} else {
+							var markerImage = new google.maps.MarkerImage("images/recycling-marker.png", null, null, null, new google.maps.Size(20, 20));	
+						}
 						var trashMarker = new google.maps.Marker({
 							position: trashPoint,
 							map: map,
