@@ -20,6 +20,7 @@
 		<div data-role="page" id="menu" data-theme="c">
 			<div data-role="header">
 				<h1>Menu</h1>
+				<a data-role="button" class="ui-btn-right" onclick="$.mobile.changePage( 'menu-help.php', { transition: 'slide' } )">Help</a>
 			</div>
 			<div data-role="content">
 				<?
