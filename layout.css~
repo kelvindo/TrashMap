@@ -19,11 +19,3 @@
 #scavenger-hunt-recycling {
 	background: url('images/scavenger-recycling-bg.png');
 }
-
-#found-trash {
-	background: url('images/found-trash-bg.png');
-}
-
-#found-recycling {
-	background: url('images/found-recycling-bg.png');
-}

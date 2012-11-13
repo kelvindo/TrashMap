@@ -44,7 +44,7 @@
 
 	</head>
 	<body>
-		<div data-role="page" id="found-trash-can">
+		<div data-role="page" id="found-trash">
 			<div data-role="header" data-position="fixed">
 				<h1>Trash Can Found</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'menu.php', { transition: 'pop' } )">Quit</a>
