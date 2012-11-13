@@ -1,4 +1,9 @@
+<?php
+	include_once('php/fb_init.php');
 
+// See if there is a user from a cookie
+	$user = $facebook->getUser();
+?>
 
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -27,9 +32,8 @@
 		<div id="fb-root"></div>
 	    <script>
 	    	window.fbAsyncInit = function() {
-	    		window.reload();
 	        	FB.init({
-	          		appId: '375003062578548',
+	          		appId: '<?php echo $facebook->getAppID() ?>',
 	          		channelUrl: 'http://stanford.edu/~jzkung/cgi-bin/trashmap/login.php',
 	          		cookie: true,
 	          		xfbml: true,
