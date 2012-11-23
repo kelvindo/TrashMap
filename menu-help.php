@@ -16,13 +16,9 @@
 				<a data-role="button" data-icon="back" data-rel="back" data-iconpos="notext"></a>
 			</div>
 			<div data-role="content">
-				<ol>
-					<li>Your position on the map is shown by the running man.</li>
-					<li>As you get closer to the target trash can, the temperature will rise in the thermometer and the text box will notify you that you are getting hotter.</li>
-					<li>As you move farther away from the target trash can, the temperature will drop in the thermometer and the text box will notify you that you are getting colder.</li>
-					<li>Once you locate the trash can, you will be notified by a popup and redirected to the 'found trashcan' page.</li>
-				</ol>
-				<p>Hint: if you have trouble locating a clue or if you found an alternate trash can, you can always click 'quit' on the left corner to leave the game!</p>
+				<p><b>Game Mode</b>: search for trash cans and recycling bins in fun and interactive ways!</p>
+				<p><b>QuickFind</b>: for those that want to find a trash can or recycling bin asap!</p>
+				<p><b>My Account</b>: View your achievements, the leaderboard, and your trash history!</p>
 			</div>
 		</div>
 	</body>

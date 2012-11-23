@@ -63,8 +63,16 @@
 					if (gotCans) {
 						for (var i = 0; i < trashcans.length; i++) {
 							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
+							var trashId = trashcans[i].id;
 							if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
-								window.location.href = "found-trash.php?id=" + trashcans[i].id + "&new=0";	
+								$('#found-popup').popup('open');
+								$('#found-popup').bind({
+									popupafterclose: function(event, ui) {
+										console.log('closed popup.');
+										console.log(trashId);
+										window.location.href = "found-trash.php?id=" + trashId + "&new=0";
+									}
+								});
 							}
 						}
 						if (!newPosition == firstPosition) {
@@ -88,7 +96,13 @@
 			}
 		});	
 		function addTrashCan() {
-			window.location.href = "found-trash.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
+			$('#found-popup').popup('open');
+			$('#found-popup').bind({
+				popupafterclose: function(event, ui) {
+					console.log('closed popup.');
+					console.log(trashId);
+					window.location.href = "found-trash.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";				}
+			});
 		}
 		</script>
 	</head>
@@ -108,6 +122,24 @@
 						<li><a href="#" class="ui-btn-active ui-state-persist">Trash</a></li>
 						<li><a href="quick-find-recycling.php">Recycling</a></li>
 					</ul>
+				</div>
+			</div>
+			<div data-role="popup" id="found-popup" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<h1>You found it!</h1>
+				</div>
+				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+					<p>You have located the trash can!</p> 
+					<a href="#" onClick="$('#found-popup').popup('close')" data-role="button" data-theme="b">Continue</a>
+				</div>
+			</div>
+			<div data-role="popup" id="found-popup" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<h1>You found it!</h1>
+				</div>
+				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+					<p>You have located the trash can!</p> 
+					<a href="#" onClick="$('#found-popup').popup('close')" data-role="button" data-theme="b">Continue</a>
 				</div>
 			</div>
 		</div>
