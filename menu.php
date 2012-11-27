@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="//cdn.optimizely.com/js/140621737.js"></script>
 		<title>TrashMap - Menu</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="layout.css">
@@ -41,9 +42,9 @@
 				?>
 
 
-				<a data-role="button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
-				<a data-role="button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Quick Find</a>
-				<a data-role="button" onClick="$.mobile.changePage( 'account.php', { transition: 'pop' } );">My Account</a>
+				<a data-role="button" id="game-mode-button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
+				<a data-role="button" id="quick-find-button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Quick Find</a>
+				<a data-role="button" id="my-account-button" onClick="$.mobile.changePage( 'account.php', { transition: 'pop' } );">My Account</a>
 
 
 			</div>
