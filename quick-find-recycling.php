@@ -111,7 +111,7 @@
 			<div data-role="header">
 				<h1>Quick Find</h1>
 				<a data-role="button" href="menu.php" data-icon="home">Menu</a>
-				<a data-role="button" onclick="addRecyclingBin()">Add Recycling Bin Here</a>
+				<a data-role="button" onclick="addRecyclingBin()">+ <img src="images/recycling-marker.png" width="20%" height="20%"/></a>
 			</div>
 			<div data-role="content">		
 				<div id="map" style="position:absolute;left:0px;top:42px;right:0px;bottom:35px;"></div>
