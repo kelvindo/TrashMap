@@ -12,7 +12,7 @@
 	<body>
 		<div data-role="page" id="hot-or-cold-rules">
 			<div data-role="header">
-				<h1>Rules</h1>
+				<h1>Hot or Cold Rules</h1>
 				<a data-role="button" data-icon="back" data-rel="back" data-iconpos="notext"></a>
 			</div>
 			<div data-role="content">

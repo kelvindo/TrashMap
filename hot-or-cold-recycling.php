@@ -28,6 +28,7 @@
 			var trashToFind = null;
 			var trashToFindId = null;
 			var oldDistance = null;
+			var found = null;
 
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
@@ -65,7 +66,7 @@
 						}
 					}
 					if (trashToFind) {
-						if ((Math.abs(newPosition.lat() - trashToFind.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashToFind.lng()) < 0.00001)) {
+						if ((Math.abs(newPosition.lat() - trashToFind.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashToFind.lng()) < 0.00001) && !found) {
 							$('#found-popup').popup('open');
 							$('#found-popup').bind({
 								popupafterclose: function(event, ui) {
@@ -74,6 +75,7 @@
 									window.location.href = "found-recycling.php?id=" + trashToFindId + "&new=0";
 								}
 							});
+							found = 9;
 						}
 						var newDistance = Math.abs(newPosition.lat() - trashToFind.lat()) + Math.abs(newPosition.lng() - trashToFind.lng());
 						if (newDistance < oldDistance) {

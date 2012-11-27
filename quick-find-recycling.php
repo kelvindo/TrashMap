@@ -28,6 +28,7 @@
 		google.setOnLoadCallback(function() {
 			var gotCans = null;
 			var firstPosition = null;
+			var found = null;
 
 			if (typeof(navigator.geolocation) != 'undefined') {
 				var myOptions = {
@@ -65,14 +66,15 @@
 						for (var i = 0; i < trashcans.length; i++) {
 							var trashPoint = new google.maps.LatLng(trashcans[i].x, trashcans[i].y);
 							var trashId = trashcans[i].id;
-							if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001)) {
+							if ((Math.abs(newPosition.lat() - trashPoint.lat()) < 0.00001) && (Math.abs(newPosition.lng() - trashPoint.lng()) < 0.00001) && !found) {
 								$('#found-popup').popup('open');
 								$('#found-popup').bind({
 									popupafterclose: function(event, ui) {
 										console.log('closed popup.');
 										window.location.href = "found-recycling.php?id=" + trashId + "&new=0";
 									}
-								});	
+								});
+								found = 9;	
 							}
 						}
 						if (!newPosition == firstPosition) {
@@ -92,7 +94,7 @@
 					}
 					currentPos = newPosition;
 				});
-				setTimeout(autoUpdate, 1000);		
+				setTimeout(autoUpdate, 5000);		
 			}
 		});
 		function addRecyclingBin() {
