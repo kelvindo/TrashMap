@@ -68,8 +68,6 @@
 								$('#found-popup').popup('open');
 								$('#found-popup').bind({
 									popupafterclose: function(event, ui) {
-										console.log('closed popup.');
-										console.log(trashId);
 										window.location.href = "found-trash.php?id=" + trashId + "&new=0";
 									}
 								});
@@ -99,8 +97,6 @@
 			$('#found-popup').popup('open');
 			$('#found-popup').bind({
 				popupafterclose: function(event, ui) {
-					console.log('closed popup.');
-					console.log(trashId);
 					window.location.href = "found-trash.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";				}
 			});
 		}
