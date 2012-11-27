@@ -99,7 +99,6 @@
 			$('#found-popup').popup('open');
 			$('#found-popup').bind({
 				popupafterclose: function(event, ui) {
-					console.log('closed popup.');
 					window.location.href = "found-recycling.php?x=" + currentPos.lat() + "&y=" + currentPos.lng() + "&new=1";
 				}
 			});
