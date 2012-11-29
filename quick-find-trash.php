@@ -109,7 +109,7 @@
 			<div data-role="header">
 				<h1>Quick Find</h1>
 				<a data-role="button" href="menu.php" data-icon="home">Menu</a>
-				<a data-role="button" onclick="addTrashCan()">+ <img src="images/trash-marker.png" height="13px" width="11px"/></a>
+				<a data-role="button" onclick="addTrashCan()">Add Here <img src="images/trash-marker.png" height="13px" width="11px"/></a>
 			</div>
 			<div data-role="content">		
 				<div id="map" style="position:absolute;left:0px;top:42px;right:0px;bottom:35px;"></div>

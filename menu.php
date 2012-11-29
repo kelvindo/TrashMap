@@ -43,7 +43,7 @@
 
 
 				<a data-role="button" id="game-mode-button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
-				<a data-role="button" id="quick-find-button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Quick Find</a>
+				<a data-role="button" id="quick-find-button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Find Nearest Bin</a>
 				<a data-role="button" id="my-account-button" onClick="$.mobile.changePage( 'account.php', { transition: 'pop' } );">My Account</a>
 
 
