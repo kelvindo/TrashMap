@@ -41,6 +41,12 @@
 				navigator.geolocation.getCurrentPosition(function(position) {
 					var firstPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					map.setCenter(firstPosition);
+					var markerImage = new google.maps.MarkerImage("images/beachflag.png", null, null, null, new google.maps.Size(20, 20));
+					var trashMarker = new google.maps.Marker({
+						position: firstPosition,
+						map: map,
+						icon: markerImage
+					});
 				});
 				autoUpdate();	
 			} else {
@@ -71,7 +77,6 @@
 							$('#found-popup').bind({
 								popupafterclose: function(event, ui) {
 									console.log('closed popup.');
-									console.log(trashId);
 									window.location.href = "found-trash.php?id=" + trashToFindId + "&new=0";
 								}
 							});

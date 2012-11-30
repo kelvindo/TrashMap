@@ -46,7 +46,7 @@
 	<body>
 		<div data-role="page" id="found-recycling">
 			<div data-role="header" data-position="fixed">
-				<h1>Recycling Bin Found</h1>
+				<h1>Bin Found!</h1>
 				<a data-role="button" data-icon="delete" onclick="$.mobile.changePage( 'menu.php', { transition: 'pop' } )">Quit</a>
 			</div>
 			<div data-role="content" id="found-container">
