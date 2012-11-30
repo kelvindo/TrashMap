@@ -97,7 +97,7 @@
 					if (marker) {
 						marker.setPosition(newPosition);
 					} else {
-						var markerImage = new google.maps.MarkerImage("http://imageflock.com/img/1286835864.gif", null, null, null, new google.maps.Size(20, 20));
+						var markerImage = new google.maps.MarkerImage("images/blueman.png", null, null, null, new google.maps.Size(20, 20));
 						marker = new google.maps.Marker({
 							position: newPosition,
 							map: map,
