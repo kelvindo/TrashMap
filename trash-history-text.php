@@ -52,6 +52,8 @@
 							//echo "<p class='author'>Points: ".$row["points"]."</p>";
 							//echo "<td><img width='100' class='pretty' src='".$row["image"]."' /></td></td>";
 						} 
+					} else {
+						echo "<br><h>Login to save your history!</h>";
 					}
 					?>
 			</ul>
@@ -61,7 +63,7 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="#" data-prefetch="true" class="ui-btn-active ui-state-persist">Text</a></li>
-						<li><a href="trash-history-map.php" data-prefetch="true">Map</a></li>
+						<li><a href="trash-history-map.php" data-prefetch="true" rel="external">Map</a></li>
 					</ul>
 				</div>
 			</div>

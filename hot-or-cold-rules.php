@@ -17,7 +17,7 @@
 			</div>
 			<div data-role="content">
 				<ol>
-					<li>Your position on the map is shown by the running man.</li>
+					<li>Your position on the map is shown by the blue man. The flag is your starting point</li>
 					<li>As you get closer to the target trash can, the temperature will rise in the thermometer and the text box will notify you that you are getting hotter.</li>
 					<li>As you move farther away from the target trash can, the temperature will drop in the thermometer and the text box will notify you that you are getting colder.</li>
 					<li>Once you locate the trash can, you will be notified by a popup and redirected to the 'found trashcan' page.</li>

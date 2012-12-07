@@ -16,8 +16,8 @@
 				<a data-role="button" data-icon="home" onclick="$.mobile.changePage( 'menu.php', { transition: 'pop' } );">Menu</a>
 			</div>
 			<div data-role="content">		
-				<a data-role="button" onClick="$.mobile.changePage( 'scavenger-hunt-trash.php', { transition: 'pop' } );">Scavenger Hunt</a>
-				<a data-role="button" onClick="$.mobile.changePage( 'hot-or-cold-trash.php', { transition: 'pop' } );">Hot or Cold</a>
+				<a href="scavenger-hunt-trash.php" data-role="button">Scavenger Hunt</a>
+				<a href="hot-or-cold-trash.php" data-role="button" rel="external">Hot or Cold</a>
 			</div>
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">

@@ -120,7 +120,7 @@
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="quick-find-trash.php">Trash</a></li>
+						<li><a href="quick-find-trash.php" rel="external">Trash</a></li>
 						<li><a href="#" class="ui-btn-active ui-state-persist">Recycling</a></li>
 					</ul>
 				</div>

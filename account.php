@@ -17,9 +17,9 @@
 				<a data-role="button" data-icon="gear" data-iconpos="notext" href="settings.php"></a>
 			</div>
 			<div data-role="content">		
-				<a data-role="button" onClick="$.mobile.changePage( 'achievements.php', { transition: 'pop' } );">Achievements</a>
-				<a data-role="button" onClick="$.mobile.changePage( 'leaderboard.php', { transition: 'pop' } );">Leaderboard</a>
-				<a data-role="button" onClick="$.mobile.changePage( 'trash-history-text.php', { transition: 'pop' } );">Trash History</a>
+				<a href="achievements.php" data-role="button">Achievements</a>	
+				<a href="leaderboard.php" data-role="button">Leaderboard</a>
+				<a href="trash-history-text.php" data-role="button">Trash History</a>
 			</div>
 		</div>
 	</body>

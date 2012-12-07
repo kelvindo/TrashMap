@@ -118,7 +118,7 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="#" class="ui-btn-active ui-state-persist">Trash</a></li>
-						<li><a href="quick-find-recycling.php">Recycling</a></li>
+						<li><a href="quick-find-recycling.php" rel="external">Recycling</a></li>
 					</ul>
 				</div>
 			</div>

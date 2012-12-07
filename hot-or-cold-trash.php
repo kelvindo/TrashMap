@@ -136,7 +136,7 @@
 				</div>
 				<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
 					<p>Toggling modes will start a new game. Are you sure?</p> 
-					<a href="#" onClick="$.mobile.changePage( 'hot-or-cold-recycling.php', { transition: 'none' } )" data-role="button" data-theme="b">Start New Game</a>
+					<a href="hot-or-cold-recycling.php" rel="external" data-role="button" data-theme="b">Start New Game</a>
 					<a href="#" data-role="button" onClick="$('#trash-toggle').trigger('click');" data-rel="back" data-theme="a">Don't Start New Game</a>
 				</div>
 			</div>

@@ -21,7 +21,7 @@
 		<div data-role="page" id="menu" data-theme="c">
 			<div data-role="header">
 				<h1>Menu</h1>
-				<a data-role="button" class="ui-btn-right" onclick="$.mobile.changePage( 'menu-help.php', { transition: 'slide' } )">Help</a>
+				<a data-role="button" class="ui-btn-right" style="text-shadow:none; color: rgb(0, 40, 153); background-color: rgb(195, 228, 254); background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(241, 241, 241, 0.498039))" onclick="$.mobile.changePage( 'menu-help.php', { transition: 'slide' } )">Help</a>
 			</div>
 			<div data-role="content">
 				<?
@@ -42,9 +42,9 @@
 				?>
 
 
-				<a data-role="button" id="game-mode-button" onClick="$.mobile.changePage( 'game-mode-trash.php', { transition: 'pop' } );">Game Mode</a>
-				<a data-role="button" id="quick-find-button" onClick="$.mobile.changePage( 'quick-find-trash.php', { transition: 'pop' } );">Find Nearest Bin</a>
-				<a data-role="button" id="my-account-button" onClick="$.mobile.changePage( 'account.php', { transition: 'pop' } );">My Account</a>
+				<a href="game-mode-trash.php" data-role="button" id="game-mode-button">Game Mode</a>
+				<a href="quick-find-trash.php" data-role="button" id="quick-find-button" rel="external">Find Nearest Bin</a>
+				<a href="account.php" data-role="button" id="my-account-button">My Account</a>
 
 
 			</div>
